@@ -1,0 +1,177 @@
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 100
+
+struct Product {
+    int id;
+    char name[50];
+    int quantity;
+    float price;
+};
+
+struct Product products[MAX];
+int count = 0;
+
+void addProduct() {
+    if (count >= MAX) {
+        printf("\nProduct storage is full!\n");
+        return;
+    }
+
+    printf("\nEnter Product ID: ");
+    scanf("%d", &products[count].id);
+
+    printf("Enter Product Name: ");
+    scanf(" %49[^\n]", products[count].name);
+
+    printf("Enter Quantity: ");
+    scanf("%d", &products[count].quantity);
+
+    printf("Enter Product Price: ");
+    scanf("%f", &products[count].price);
+
+    if (products[count].quantity < 0 ||
+        products[count].price < 0) {
+        printf("Invalid quantity or price!\n");
+        return;
+    }
+
+    count++;
+    printf("\nProduct added successfully!\n");
+}
+
+void displayProducts() {
+    int i;
+
+    if (count == 0) {
+        printf("\nNo products available!\n");
+        return;
+    }
+
+    printf("\n========== PRODUCT LIST ==========\n");
+    printf("%-8s %-20s %-10s %-10s\n",
+           "ID", "Name", "Quantity", "Price");
+
+    for (i = 0; i < count; i++) {
+        printf("%-8d %-20s %-10d %.2f\n",
+               products[i].id,
+               products[i].name,
+               products[i].quantity,
+               products[i].price);
+    }
+}
+
+void searchProduct() {
+    int id, i;
+
+    printf("\nEnter Product ID to search: ");
+    scanf("%d", &id);
+
+    for (i = 0; i < count; i++) {
+        if (products[i].id == id) {
+            printf("\nProduct Found!\n");
+            printf("ID: %d\n", products[i].id);
+            printf("Name: %s\n", products[i].name);
+            printf("Quantity: %d\n",
+                   products[i].quantity);
+            printf("Price: %.2f\n",
+                   products[i].price);
+            return;
+        }
+    }
+
+    printf("\nProduct not found!\n");
+}
+
+void updateStock() {
+    int id, quantity, i;
+
+    printf("\nEnter Product ID: ");
+    scanf("%d", &id);
+
+    for (i = 0; i < count; i++) {
+        if (products[i].id == id) {
+            printf("Enter new quantity: ");
+            scanf("%d", &quantity);
+
+            if (quantity < 0) {
+                printf("Invalid quantity!\n");
+                return;
+            }
+
+            products[i].quantity = quantity;
+            printf("Stock updated successfully!\n");
+            return;
+        }
+    }
+
+    printf("Product not found!\n");
+}
+
+void calculateValue() {
+    int i;
+    float total = 0;
+
+    for (i = 0; i < count; i++) {
+        total += products[i].price *
+                 products[i].quantity;
+    }
+
+    printf("\nTotal Stock Value: %.2f\n", total);
+}
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n================================\n");
+        printf("    PRODUCT MANAGEMENT SYSTEM\n");
+        printf("================================\n");
+        printf("1. Add Product\n");
+        printf("2. Display Products\n");
+        printf("3. Search Product\n");
+        printf("4. Update Stock\n");
+        printf("5. Calculate Stock Value\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input!\n");
+            return 1;
+        }
+
+        switch (choice) {
+            case 1:
+                addProduct();
+                break;
+
+            case 2:
+                displayProducts();
+                break;
+
+            case 3:
+                searchProduct();
+                break;
+
+            case 4:
+                updateStock();
+                break;
+
+            case 5:
+                calculateValue();
+                break;
+
+            case 6:
+                printf("\nThank you for using the system!\n");
+                break;
+
+            default:
+                printf("\nInvalid choice! Try again.\n");
+        }
+
+    } while (choice != 6);
+
+    return 0;
+}
