@@ -1,0 +1,75 @@
+
+#include <stdio.h>
+
+int main() {
+    int choice;
+    int trees = 0;
+    int water = 0;
+    int cleanups = 0;
+
+    printf("====================================\n");
+    printf("       SAVE NATURE, SAVE LIFE\n");
+    printf("====================================\n");
+
+    printf("Protect Nature, Protect Our Future!\n");
+
+    do {
+        printf("\n--------- NATURE MENU ---------\n");
+        printf("1. Plant Trees\n");
+        printf("2. Save Water\n");
+        printf("3. Reduce Pollution\n");
+        printf("4. Keep Environment Clean\n");
+        printf("5. View Nature Report\n");
+        printf("6. Exit\n");
+
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                trees++;
+                printf("\nGreat! You planted a tree.\n");
+                printf("Trees recorded: %d\n", trees);
+                break;
+
+            case 2:
+                water++;
+                printf("\nSave every drop of water!\n");
+                printf("Water-saving actions: %d\n", water);
+                break;
+
+            case 3:
+                printf("\nUse public transport when possible.\n");
+                printf("Avoid plastic and reduce pollution!\n");
+                break;
+
+            case 4:
+                cleanups++;
+                printf("\nKeep your surroundings clean!\n");
+                printf("Clean-up actions: %d\n", cleanups);
+                break;
+
+            case 5:
+                printf("\n======= NATURE REPORT =======\n");
+                printf("Trees planted: %d\n", trees);
+                printf("Water-saving actions: %d\n", water);
+                printf("Clean-up actions: %d\n", cleanups);
+                printf("Pollution awareness: Protect Earth!\n");
+                printf("=============================\n");
+                break;
+
+            case 6:
+                printf("\nThank you for protecting nature!\n");
+                printf("SAVE NATURE, SAVE LIFE!\n");
+                break;
+
+            default:
+                printf("\nInvalid choice! Try again.\n");
+        }
+
+    } while (choice != 6);
+
+    printf("\nOur Earth, Our Responsibility!\n");
+
+    return 0;
+}
