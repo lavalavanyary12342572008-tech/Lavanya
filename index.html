@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8f5e9;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #1b5e20;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 15px auto;
+            max-width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px #bbb;
+        }
+        button {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        #message {
+            color: #1b5e20;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌱 Smart Waste Management</h1>
+    <p>Keep Our Environment Clean!</p>
+
+    <div class="card">
+        <h2>♻️ Waste Segregation</h2>
+        <p>Separate wet waste and dry waste.</p>
+        <button onclick="showMessage()">Get Started</button>
+        <p id="message"></p>
+    </div>
+
+    <div class="card">
+        <h2>🌍 Save Nature</h2>
+        <p>Reduce waste, reuse materials, and recycle.</p>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").innerHTML =
+                "Great! Let's keep our planet clean! 🌿";
+        }
+    </script>
+
+</body>
+</html>
